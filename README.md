@@ -1,4 +1,4 @@
-# Action Learning Platform
+# AI For Mental Health Analysis
 
 A web platform for fetching and analyzing tweets for learning and research purposes. Built with FastAPI backend and React frontend, featuring user authentication, tweet data retrieval via Masa API, and persistent tweet storage.
 
