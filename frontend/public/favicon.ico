@@ -1,0 +1,8 @@
+<br />
+<b>Fatal error</b>:  Uncaught Intervention\Image\Exception\NotReadableException: Unable to read color (white). in /home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/AbstractColor.php:222
+Stack trace:
+#0 /home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/Gd/Color.php(89): Intervention\Image\AbstractColor-&gt;rgbaFromString('white')
+#1 /home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/AbstractColor.php(122): Intervention\Image\Gd\Color-&gt;initFromString('white')
+#2 /home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/AbstractColor.php(108): Intervention\Image\AbstractColor-&gt;parse('white')
+#3 /home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/Gd/Font.php(135): Intervention\Image\AbstractColor-&gt;__construct('white')
+#4 /home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/Commands/TextCommand.php(30): Intervention\Image\Gd\Font-&gt;applyToImage(Object(Intervention\Image\Image), 16, in <b>/home/forge/na.ui-avatars.com/vendor/intervention/image/src/Intervention/Image/AbstractColor.php</b> on line <b>222</b><br />
