@@ -40,7 +40,7 @@ app.add_middleware(
 security = HTTPBearer()
 
 # Initialize ElevenLabs client
-eleven_client = ElevenLabs(api_key="sk_193f47b99cc616b6aa2ba52a22cee765d008d403ea213c3d")
+eleven_client = ElevenLabs(api_key=settings.elevenlabs_api_key)
 
 # Dependency to get current user from JWT token
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security), db: Session = Depends(get_db)):
@@ -388,10 +388,10 @@ async def analyze_tweet(
             )
         
         # Call RunPod API - Use environment variables for security
-        runpod_url = f"https://api.runpod.ai/v2/{os.getenv('RUNPOD_ENDPOINT_ID', 'your-endpoint-id')}/runsync"
+        runpod_url = f"https://api.runpod.ai/v2/{settings.runpod_endpoint_id}/runsync"
         headers = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {os.getenv('RUNPOD_API_KEY', 'your-api-key')}"
+            "Authorization": f"Bearer {settings.runpod_api_key}"
         }
         
         payload = {
@@ -490,10 +490,10 @@ async def analyze_all_tweets(
             }
         
         # RunPod API configuration - Use environment variables for security
-        runpod_url = f"https://api.runpod.ai/v2/{os.getenv('RUNPOD_ENDPOINT_ID', 'your-endpoint-id')}/runsync"
+        runpod_url = f"https://api.runpod.ai/v2/{settings.runpod_endpoint_id}/runsync"
         headers = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {os.getenv('RUNPOD_API_KEY', 'your-api-key')}"
+            "Authorization": f"Bearer {settings.runpod_api_key}"
         }
         
         # Create separate database engine for concurrent database writes
@@ -809,7 +809,7 @@ async def generate_analysis_report(user_id: int, db: Session) -> AnalysisReport:
         """
         
         # Set up LiteLLM with OpenRouter
-        litellm.api_key = "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"
+        litellm.api_key = settings.openrouter_api_key
         
         # Generate report using Gemini Flash via OpenRouter
         response = await litellm.acompletion(
@@ -1018,7 +1018,7 @@ IMPORTANT: You are NOT a replacement for professional mental health care. Always
 
         # Set up LiteLLM with OpenRouter
         litellm.api_base = "https://openrouter.ai/api/v1"
-        litellm.api_key = "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"
+        litellm.api_key = settings.openrouter_api_key
 
         # Generate counselor response
         messages_for_llm = [
@@ -1141,6 +1141,8 @@ async def debug_config():
         "database_configured": bool(settings.database_url),
         "masa_api_token_set": bool(settings.masa_api_token),
         "secret_key_set": bool(settings.secret_key),
+        "elevenlabs_api_key_set": bool(settings.elevenlabs_api_key),
+        "openrouter_api_key_set": bool(settings.openrouter_api_key),
         "frontend_url": settings.frontend_url
     }
 

@@ -28,7 +28,13 @@ class Settings(BaseSettings):
     backend_port: int = 8000
     
     # Masa API Configuration for Tweet Fetching
-    masa_api_token: str = "eWhHVdpvkF4XyCaqLcYJM8zzFs80N64YPyHrabg8VWenepY8"
+    masa_api_token: str = ""
+
+    # Third-party API keys (set these in backend/.env, never in code)
+    elevenlabs_api_key: str = ""
+    openrouter_api_key: str = ""
+    runpod_endpoint_id: str = ""
+    runpod_api_key: str = ""
     
     class Config:
         env_file = BASE_DIR / ".env"
