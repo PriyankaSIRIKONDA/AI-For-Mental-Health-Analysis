@@ -103,6 +103,16 @@ frontend/
     services/api.js
 ```
 
+## Team and credits
+
+Built by a team of three for the EPITA Action Learning project (Spring 2025): **Priyanka Sirikonda**, **Cihan Karadoğan** and **Nguyen Minh Chau**. This repository is a copy of the team's code; the full commit history lives in the team repository. Contributions below follow that history.
+
+- **Priyanka Sirikonda:** RunPod inference integration: the `/tweets/analyze` (single tweet) and `/tweets/analyze-all` (bulk) endpoints that send tweets to the classifier on the RunPod serverless endpoint, storage of the results, and the analysis UI in the dashboard (`TweetCard`, `DashboardPage`, API client). Team repo commit `60506c3`, 22 Jul 2025.
+- **Cihan Karadoğan:** project setup, Twitter authentication and tweet fetching, search caching, text-to-speech and speech-to-text with ElevenLabs.
+- **Nguyen Minh Chau:** counselor chatbot and report generation.
+
+The classifier itself was trained outside this repository and served from RunPod.
+
 ## Limitations
 
 - The classifier is served from a separate RunPod endpoint. Its training code and evaluation are not in this repository.
@@ -111,4 +121,4 @@ frontend/
 
 ## Changelog
 
-- **Nov 2026:** moved all API keys out of the code into `.env` settings, added `.env.example`, and rewrote this README to match the current features.
+- **Nov 2026:** added a team and credits section. Earlier: moved all API keys out of the code into `.env` settings, added `.env.example`, and rewrote this README to match the current features.
